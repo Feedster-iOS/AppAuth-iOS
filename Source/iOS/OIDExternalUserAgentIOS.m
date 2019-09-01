@@ -19,6 +19,7 @@
 #import "OIDExternalUserAgentIOS.h"
 
 #import <SafariServices/SafariServices.h>
+#import <ExtensionApplication/ExtensionApplication.h>
 
 #import "OIDErrorUtilities.h"
 #import "OIDExternalUserAgentSession.h"
@@ -120,7 +121,7 @@ static id<OIDSafariViewControllerFactory> __nullable gSafariViewControllerFactor
     [_presentingViewController presentViewController:safariVC animated:YES completion:nil];
     openedSafari = YES;
   } else {
-    openedSafari = [[UIApplication sharedApplication] openURL:requestURL];
+    openedSafari = [[ExtensionApplication sharedApplication] openURL:requestURL];
   }
 
   if (!openedSafari) {

@@ -19,6 +19,7 @@
 #import "OIDExternalUserAgentIOSCustomBrowser.h"
 
 #import <UIKit/UIKit.h>
+#import <ExtensionApplication/ExtensionApplication.h>
 
 #import "OIDAuthorizationRequest.h"
 #import "OIDAuthorizationService.h"
@@ -146,8 +147,8 @@ NS_ASSUME_NONNULL_BEGIN
     // Opens AppStore if app isn't installed
     NSString *testURLString = [NSString stringWithFormat:@"%@://example.com", _canOpenURLScheme];
     NSURL *testURL = [NSURL URLWithString:testURLString];
-    if (![[UIApplication sharedApplication] canOpenURL:testURL]) {
-      [[UIApplication sharedApplication] openURL:_appStoreURL];
+    if (![[ExtensionApplication sharedApplication] canOpenURL:testURL]) {
+      [[ExtensionApplication sharedApplication] openURL:_appStoreURL];
       return NO;
     }
   }
@@ -155,7 +156,7 @@ NS_ASSUME_NONNULL_BEGIN
   // Transforms the request URL and opens it.
   NSURL *requestURL = [request externalUserAgentRequestURL];
   requestURL = _URLTransformation(requestURL);
-  BOOL openedInBrowser = [[UIApplication sharedApplication] openURL:requestURL];
+  BOOL openedInBrowser = [[ExtensionApplication sharedApplication] openURL:requestURL];
   return openedInBrowser;
 }
 

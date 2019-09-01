@@ -45,4 +45,5 @@ It follows the OAuth 2.0 for Native Apps best current practice
   # macOS
   s.osx.source_files = "Source/macOS/**/*.{h,m}"
   s.osx.deployment_target = '10.9'
+  s.dependency 'ExtensionApplication'
 end
